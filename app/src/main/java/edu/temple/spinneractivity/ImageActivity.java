@@ -11,18 +11,20 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class ImageActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
+public class ImageActivity extends AppCompatActivity{
 
-    String names [] = {"penny", "dime", "nickel","quarter"};
+    String names [] = {"Select One!","penny", "dime", "nickel","quarter"};
 
-    int img [] = {R.drawable.penny,R.drawable.dime,R.drawable.quarter,R.drawable.nickel};
+    int img [] = {R.drawable.transparent,R.drawable.penny,R.drawable.dime,R.drawable.quarter,R.drawable.nickel};
 
-    ImageView image = findViewById(R.id.imageView2);
+    ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        image = (ImageView) findViewById(R.id.coinImg);
 
         Spinner coinSpinner = findViewById(R.id.spinner_coins);
 
@@ -30,15 +32,17 @@ public class ImageActivity extends AppCompatActivity implements AdapterView.OnIt
 
         coinSpinner.setAdapter(coinAdapter);
 
-    }
+        coinSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                image.setImageResource(img[position]);
+            }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        image.setImageResource(img[position]);
-    }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
 
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {
+            }
+        });
 
     }
 }
