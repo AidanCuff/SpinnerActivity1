@@ -11,35 +11,42 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ImageAdapter extends ArrayAdapter<CoinItem> {
+public class ImageAdapter extends BaseAdapter {
+    private Context context;
+    private String [] names;
+    private int [] img;
+    LayoutInflater layoutInflater;
 
-    public ImageAdapter(Context context, ArrayList<CoinItem> coinList){
-        super(context,0,coinList);
+    public ImageAdapter(Context context, String[] names, int[] img) {
+        this.context = context;
+        this.names = names;
+        this.img = img;
+        this.layoutInflater = layoutInflater.from(context);
+
+    }
+
+    @Override
+    public int getCount() {
+        return names.length;
+    }
+
+    @Override
+    public Object getItem(int position) {
+        return null;
+    }
+
+    @Override
+    public long getItemId(int position) {
+        return 0;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return initView(position, convertView, parent);
-    }
-
-    @Override
-    public View getDropDownView(int position, View convertView, ViewGroup parent) {
-        return initView(position, convertView, parent);
-    }
-
-    private View initView(int position, View convertView, ViewGroup parent){
-        if(convertView==null){
-            convertView = LayoutInflater.from(getContext()).inflate(
-                    R.layout.coin_spinner_layout,parent,false
-            );
-        }
-        ImageView imageViewCoin = convertView.findViewById(R.id.image_view_coin);
-        TextView textViewName = convertView.findViewById(R.id.text_view_name);
-        CoinItem current = (CoinItem) getItem(position);
-        if(current!=null) {
-            imageViewCoin.setImageResource(current.getCoinImg());
-            textViewName.setText(current.getCoinName());
-        }
+        convertView = layoutInflater.inflate(R.layout.coin_spinner_layout,null);
+        ImageView imges = convertView.findViewById(R.id.image_view_coin);
+        TextView name = convertView.findViewById(R.id.text_view_name);
+        imges.setImageResource(img[position]);
+        name.setText(names[position]);
         return convertView;
     }
 }
