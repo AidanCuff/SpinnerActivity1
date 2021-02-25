@@ -32,7 +32,7 @@ public class ImageAdapter extends BaseAdapter {
 
     @Override
     public Object getItem(int position) {
-        return null;
+        return 0;
     }
 
     @Override
