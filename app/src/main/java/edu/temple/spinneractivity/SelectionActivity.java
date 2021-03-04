@@ -18,14 +18,11 @@ public class SelectionActivity extends AppCompatActivity{
 
     int img [] = {R.drawable.transparent,R.drawable.penny,R.drawable.dime,R.drawable.nickel,R.drawable.quarter};
 
-    ImageView image;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        image = (ImageView) findViewById(R.id.coinImg);
 
         Spinner coinSpinner = findViewById(R.id.spinner_coins);
 
@@ -38,11 +35,10 @@ public class SelectionActivity extends AppCompatActivity{
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(position!=0) {
                     Intent intent = new Intent(SelectionActivity.this, DisplayActivity.class);
-                    Intent restart = getIntent();
-                    image.setImageResource(img[position]);
                     intent.putExtra("title", names[position]);
                     intent.putExtra("image", img[position]);
                     startActivity(intent);
+                    coinSpinner.setSelection(0);
                 }
             }
 

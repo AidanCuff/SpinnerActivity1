@@ -27,4 +27,5 @@ public class DisplayActivity extends AppCompatActivity {
         title.setText(text);
         image.setImageResource(photo);
     }
+
 }
