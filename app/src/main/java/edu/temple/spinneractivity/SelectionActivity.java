@@ -11,11 +11,11 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 
-public class ImageActivity extends AppCompatActivity{
+public class SelectionActivity extends AppCompatActivity{
 
     String names [] = {"Select One!","penny", "dime", "nickel","quarter"};
 
-    int img [] = {R.drawable.transparent,R.drawable.penny,R.drawable.dime,R.drawable.quarter,R.drawable.nickel};
+    int img [] = {R.drawable.transparent,R.drawable.penny,R.drawable.dime,R.drawable.nickel,R.drawable.quarter};
 
     ImageView image;
 
