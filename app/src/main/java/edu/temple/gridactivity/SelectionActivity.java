@@ -6,13 +6,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.GridView;
 import android.widget.Spinner;
 
 public class SelectionActivity extends AppCompatActivity{
 
-    String names [] = {"Select One!","penny", "dime", "nickel","quarter"};
+    String names [] = {"penny", "dime", "nickel","quarter"};
 
-    int img [] = {R.drawable.transparent,R.drawable.penny,R.drawable.dime,R.drawable.nickel,R.drawable.quarter};
+    int img [] = {R.drawable.penny,R.drawable.dime,R.drawable.nickel,R.drawable.quarter};
+
+    GridView grid;
 
 
     @Override
@@ -20,27 +23,18 @@ public class SelectionActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Spinner coinSpinner = findViewById(R.id.spinner_coins);
+        CustomGrid gridAdapter = new CustomGrid(SelectionActivity.this,names,img);
 
-        ImageAdapter coinAdapter = new ImageAdapter(this,names,img);
+        grid = (GridView) findViewById(R.id.grid);
+        grid.setAdapter(gridAdapter);
 
-        coinSpinner.setAdapter(coinAdapter);
-
-        coinSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        grid.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position!=0) {
-                    Intent intent = new Intent(SelectionActivity.this, DisplayActivity.class);
-                    intent.putExtra("title", names[position]);
-                    intent.putExtra("image", img[position]);
-                    startActivity(intent);
-                    coinSpinner.setSelection(0);
-                }
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(SelectionActivity.this, DisplayActivity.class);
+                intent.putExtra("title", names[position]);
+                intent.putExtra("image", img[position]);
+                startActivity(intent);
             }
         });
 
