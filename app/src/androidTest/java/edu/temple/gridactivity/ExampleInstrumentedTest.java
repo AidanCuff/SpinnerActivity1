@@ -1,4 +1,4 @@
-package edu.temple.spinneractivity;
+package edu.temple.gridactivity;
 
 import android.content.Context;
 

@@ -1,4 +1,4 @@
-package edu.temple.spinneractivity;
+package edu.temple.gridactivity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,11 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
-import android.widget.ImageView;
 import android.widget.Spinner;
-import android.widget.Toast;
-
-import java.util.ArrayList;
 
 public class SelectionActivity extends AppCompatActivity{
 
