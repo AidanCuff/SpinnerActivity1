@@ -14,6 +14,8 @@ public class DisplayActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_display);
 
+        setTitle("DisplayActivity");
+
         Intent intent = getIntent();
 
         ImageView image = (ImageView) findViewById(R.id.imageView);
