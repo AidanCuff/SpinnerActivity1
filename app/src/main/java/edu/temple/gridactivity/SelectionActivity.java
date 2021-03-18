@@ -11,7 +11,7 @@ import android.widget.Spinner;
 
 public class SelectionActivity extends AppCompatActivity{
 
-    String names [] = {"penny", "dime", "nickel","quarter"}; //test
+    String names [] = {"penny", "dime", "nickel","quarter"};
 
     int img [] = {R.drawable.penny,R.drawable.dime,R.drawable.nickel,R.drawable.quarter};
 
